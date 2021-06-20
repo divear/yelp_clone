@@ -1,8 +1,6 @@
 /server/node_modules
 package.json
 package-lock.json
-/db
-/db/index.js
-/server/db
+
 .env
 server/.env
