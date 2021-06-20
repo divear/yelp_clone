@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const morgan = require("morgan");
 
+const db = require("./db")
 
 //middleware 
 
@@ -14,12 +14,13 @@ app.use((req,res, next)=>{
 });
 
 //get all
-app.get("/api/v1/restaurants", (req, res)=>{
-    console.log("route handler ran");
+app.get("/api/v1/restaurants", async(req, res)=>{
+    const results = await db.query("SELECT * FROM restaurants")
+    console.log(results);
     res.json({
         status: "success",
         data: {
-            restaurant: ["mcdonalds", "KFC"]    
+            restaurants: results[rows] 
         }
     });
 });
