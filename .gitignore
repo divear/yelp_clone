@@ -3,3 +3,4 @@ package.json
 package-lock.json
 /db
 /db/index.js
+/server\db
