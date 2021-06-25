@@ -1,6 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 function List() {
+
+    useEffect(()=>{
+
+    },[])
+
     return (
         <div className="Header">
             <table>
