@@ -1,0 +1,54 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 0.5vw;
+    
+}
+*::selection{
+    background-color: rgb(127, 138, 161);
+}
+body{
+    background-color: rgb(53, 62, 82);
+}
+.headerText{
+    font-size: 5vw;
+    margin: 0;
+    padding: 0%;
+    font-weight: 50;
+    color: rgb(214, 228, 233);
+}
+
+
+.rest-name{
+    border-radius: 0.4vw;
+}
+.name, .location, .select, .AddResturant{
+    background-color: rgb(221, 221, 240);
+    width: 10vw;
+    height: 2vw;
+    font-size: 1vw;
+    border: 1px black dotted ;
+}
+.AddResturant{
+    background-color: rgb(170, 143, 196);
+}
+table, th, td {
+    width: 80vw;
+    border: 1px solid black;
+    padding: 0.2vw;
+    background-color: rgb(175, 210, 233);
+    text-align: center;
+    margin: auto;
+    border-radius: 0.5vw;
+}
+.edit, .delete{
+    width: 100%;
+    padding: 0%;
+    margin: auto;
+}
+.prim > th{
+    background-color: rgb(236, 192, 201);
+}
+td{
+    background-color: rgb(195, 245, 245);
+}
