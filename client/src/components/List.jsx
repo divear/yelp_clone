@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react'
+import React, {useEffect} from 'react';
+import Finder from '../apis/Finder';
 
 function List() {
 
