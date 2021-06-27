@@ -1,10 +1,21 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Finder from '../apis/Finder';
+import { Context } from '../context/Context';
 
 function List() {
+    const {restaurants, setRestaurants} = useContext(Context);
 
-    useEffect(()=>{
-
+    useEffect(() => {
+        const fetchData = async() =>{
+            try {
+                const response = await Finder.get("/");
+                console.log(response);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        
+        fetchData()
     },[])
 
     return (
