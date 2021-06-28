@@ -34,15 +34,16 @@ function List(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {restaurants.map(res =>{
-                        <tr>
-                            <td>{res.name}</td>
-                            <td>{res.location}</td>
-                            <td>{toString(res.price_range)}</td>
-                            <td>reviews</td>
-                            <td><button className="edit">Edit</button></td>
-                            <td><button className="delete">Delete</button></td>
-                        </tr>
+                    {restaurants && restaurants.map(res =>{
+                        return(
+                            <tr key={res.id}>
+                                <td>{res.name}</td>
+                                <td>{res.location}</td>
+                                <td>{res.price_range}</td>
+                                <td>reviews</td>
+                                <td><button className="edit">Edit</button></td>
+                                <td><button className="delete">Delete</button></td>
+                            </tr>)
                     })}
                     {/* <tr>
                         <td>McDonalds</td>
