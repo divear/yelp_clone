@@ -2,14 +2,16 @@ import React, {useContext, useEffect} from 'react';
 import Finder from '../apis/Finder';
 import { Context } from '../context/Context';
 
-function List() {
+function List(props) {
     const {restaurants, setRestaurants} = useContext(Context);
+
+
 
     useEffect(() => {
         const fetchData = async() =>{
             try {
                 const response = await Finder.get("/");
-                console.log(response);
+                setRestaurants(response.data.data.restaurants)
             } catch (error) {
                 console.log(error);
             }
@@ -32,14 +34,24 @@ function List() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    {restaurants.map(res =>{
+                        <tr>
+                            <td>{res.name}</td>
+                            <td>{res.location}</td>
+                            <td>{toString(res.price_range)}</td>
+                            <td>reviews</td>
+                            <td><button className="edit">Edit</button></td>
+                            <td><button className="delete">Delete</button></td>
+                        </tr>
+                    })}
+                    {/* <tr>
                         <td>McDonalds</td>
                         <td>New York</td>
                         <td>3</td>
                         <td></td>
                         <td><button className="edit">Edit</button></td>
                         <td><button className="delete">Delete</button></td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
         </div>
