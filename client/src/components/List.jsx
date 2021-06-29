@@ -18,7 +18,7 @@ function List(props) {
         }
         
         fetchData()
-    },[])
+    },[setRestaurants])
 
     return (
         <div className="Header">
