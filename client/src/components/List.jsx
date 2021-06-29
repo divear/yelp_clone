@@ -18,7 +18,16 @@ function List(props) {
         }
         
         fetchData()
-    },[setRestaurants])
+    },[setRestaurants]);
+
+    async function handleDelete(id){
+        try {
+            const response = Finder.delete(`/${id}`);
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div className="Header">
@@ -41,18 +50,11 @@ function List(props) {
                                 <td>{res.location}</td>
                                 <td>{res.price_range}</td>
                                 <td>reviews</td>
-                                <td><button className="edit">Edit</button></td>
-                                <td><button className="delete">Delete</button></td>
+                                {/* <td><button onClick={()=>handleUpdate(restaurant.id)} className="edit">Edit</button></td> */}
+                                <td><button onClick={()=>handleDelete(restaurants.id)} className="delete">Delete</button></td>
                             </tr>)
                     })}
-                    {/* <tr>
-                        <td>McDonalds</td>
-                        <td>New York</td>
-                        <td>3</td>
-                        <td></td>
-                        <td><button className="edit">Edit</button></td>
-                        <td><button className="delete">Delete</button></td>
-                    </tr> */}
+                    
                 </tbody>
             </table>
         </div>
