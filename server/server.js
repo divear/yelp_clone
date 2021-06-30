@@ -11,7 +11,6 @@ app.use(cors())
 app.use(express.json())
 
 app.use((req,res, next)=>{
-    console.log("middleware just run");
     next()
 });
 
@@ -86,20 +85,20 @@ app.put("/api/v1/restaurants/:id", async(req, res)=>{
      
 })
 
+//delete
 app.delete("/api/v1/restaurants/:id", async(req, res)=>{
     try {
         const results = await db.query("DELETE FROM restaurants WHERE id = $1", [req.params.id])
         res.status(204).json({
             status: "success",
-            data: {
-                restaurant: results.rows[0]
-            }
         });
     } catch (error) {
         console.log(error);
     }
     
 })
+
+  
 
 const port = process.env.PORT || 4000;
 app.listen(port, ()=>{

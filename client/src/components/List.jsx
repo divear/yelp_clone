@@ -22,8 +22,12 @@ function List(props) {
 
     async function handleDelete(id){
         try {
-            const response = Finder.delete(`/${id}`);
+            const response = await Finder.delete(`/${id}`);
             console.log(response);
+            setRestaurants(restaurants.filter((restaurant) => {
+                return restaurant.id !== id
+            }));
+            
         } catch (error) {
             console.log(error);
         }
@@ -50,8 +54,8 @@ function List(props) {
                                 <td>{res.location}</td>
                                 <td>{res.price_range}</td>
                                 <td>reviews</td>
-                                {/* <td><button onClick={()=>handleUpdate(restaurant.id)} className="edit">Edit</button></td> */}
-                                <td><button onClick={()=>handleDelete(restaurants.id)} className="delete">Delete</button></td>
+                                <td><button className="edit">Edit</button></td>
+                                <td><button onClick={()=>handleDelete(res.id)} className="delete">Delete</button></td>
                             </tr>)
                     })}
                     
