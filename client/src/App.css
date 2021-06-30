@@ -2,10 +2,11 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 0.5vw;
-    
+  
 }
 *::selection{
     background-color: rgb(127, 138, 161);
+    color: aliceblue;
 }
 body{
     background-color: rgb(53, 62, 82);
@@ -51,4 +52,17 @@ table, th, td {
 }
 td{
     background-color: rgb(195, 245, 245);
+}
+.update{
+    color: aliceblue;
+}
+.submit-edit{
+    background-color: rgb(65, 206, 159);
+    font-size: 1vw;
+    margin: 5vw;
+}
+.form-group > select,input,label,button{
+    width: 20vw;
+    height: 3vw;
+    font-size:1.5vw;
 }

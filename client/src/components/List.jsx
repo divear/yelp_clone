@@ -1,10 +1,11 @@
 import React, {useContext, useEffect} from 'react';
 import Finder from '../apis/Finder';
 import { Context } from '../context/Context';
-
+import {useHistory} from "react-router-dom"
+ 
 function List(props) {
     const {restaurants, setRestaurants} = useContext(Context);
-
+    let history = useHistory()
 
 
     useEffect(() => {
@@ -32,9 +33,13 @@ function List(props) {
             console.log(error);
         }
     }
+    async function handleUpdate(id){
+        history.push(`/restaurants/${id}/update`)
+    }
 
     return (
         <div className="Header">
+            <title>Restaurants</title>
             <table>
                 <thead>
                     <tr className="prim">
@@ -54,7 +59,7 @@ function List(props) {
                                 <td>{res.location}</td>
                                 <td>{res.price_range}</td>
                                 <td>reviews</td>
-                                <td><button className="edit">Edit</button></td>
+                                <td><button onClick={()=>handleUpdate(res.id)} className="edit">Edit</button></td>
                                 <td><button onClick={()=>handleDelete(res.id)} className="delete">Delete</button></td>
                             </tr>)
                     })}
