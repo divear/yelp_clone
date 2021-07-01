@@ -36,6 +36,9 @@ function List(props) {
     async function handleUpdate(id){
         history.push(`/restaurants/${id}/update`)
     }
+    async function handleSelect(id){
+        history.push(`/restaurants/${id}`)
+    }
 
     return (
         <div className="Header">
@@ -55,7 +58,7 @@ function List(props) {
                     {restaurants && restaurants.map(res =>{
                         return(
                             <tr key={res.id}>
-                                <td>{res.name}</td>
+                                <td onClick={()=>handleSelect(res.id)}>{res.name}</td>
                                 <td>{res.location}</td>
                                 <td>{res.price_range}</td>
                                 <td>reviews</td>
