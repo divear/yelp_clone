@@ -8,9 +8,11 @@ import { Context } from '../context/Context';
 
 
 function Detail() {
+    
     const {id} = useParams();
     const {selectedRest, setSelectedRest} = useContext(Context);
     let history = useHistory()
+    
 
     useEffect(()=>{
         async function fetchData(){
@@ -18,22 +20,23 @@ function Detail() {
                 const response = await Finder.get(`/${id}`);
                 console.log(response);
                 
-                setSelectedRest(response.data.data.restaurant);
-                
+                setSelectedRest(response.data.data);
                 
             } catch (error) {
                 console.log(error);
-                history.get("/")
+                history.get("/");
             }
-
         }
         fetchData()
+        
     },[])
     return (
         <div>
-            <h5>Details of </h5><h1> {selectedRest ? (
+            
+            <h1> {selectedRest ? (
                 <div>
-                    <Reviews/>
+                    <title>{selectedRest.restaurant.name}</title>
+                    <Reviews reviews={selectedRest.reviews}/>
                     <AddReview/>
                 </div>
                

@@ -27,7 +27,7 @@ function AddReview() {
                     <label htmlFor="Review">Review</label>
                     <textarea value={review} onChange={(e)=>setReview(e.target.value)} id="Review"/>
                 </div>
-                <button type="submit">Send review</button>
+                <button className="addrevsub" type="submit">Add a new review</button>
             </form>
         </div>
     )
