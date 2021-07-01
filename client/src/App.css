@@ -66,3 +66,29 @@ td{
     height: 3vw;
     font-size:1.5vw;
 }
+
+.card{
+    background-color: rgb(128, 94, 160);
+    
+}
+.cardText{
+    font-size: 0.8vw;
+    margin: 0%;
+    padding: 0%;
+}
+
+.revs{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+}
+.stars{
+    color:rgb(224, 162, 47);
+}
+.addrev{
+    position: absolute;
+    text-align:left;
+    left: 70%;
+    top: 5%;
+    margin: auto;
+}

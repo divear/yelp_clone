@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import Finder from '../apis/Finder';
+import AddReview from '../components/AddReview';
+import Reviews from '../components/Reviews';
+import StarRating from '../components/StarRating';
 import { Context } from '../context/Context';
 
 
@@ -28,7 +31,13 @@ function Detail() {
     },[])
     return (
         <div>
-            <h1>Details of {selectedRest ? selectedRest.name : history.push("/")}</h1>
+            <h5>Details of </h5><h1> {selectedRest ? (
+                <div>
+                    <Reviews/>
+                    <AddReview/>
+                </div>
+               
+            ) : history.push("/")}</h1>
         </div>
     )
 }
