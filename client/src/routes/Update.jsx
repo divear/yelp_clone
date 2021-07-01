@@ -1,8 +1,8 @@
-import e from 'cors';
+//import e from 'cors';
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import Finder from '../apis/Finder';
-import { Context } from '../context/Context';
+//import { Context } from '../context/Context';
 
 
 function Update(props) {
@@ -25,7 +25,7 @@ function Update(props) {
             }
         }
         fetchData()
-    }, [])
+    })
 
     async function handleSubmit(e){
         e.preventDefault()

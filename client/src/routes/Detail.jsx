@@ -36,7 +36,15 @@ function Detail() {
             <h1> {selectedRest ? (
                 <div>
                     <title>{selectedRest.restaurant.name}</title>
+                    <h1 className="restname">{selectedRest.restaurant.name}</h1>
+                    <div className="stars">
+                        <StarRating rating={selectedRest.restaurant.average_rating}/>
+                        <span>
+                            {selectedRest.restaurant.count ? `(${selectedRest.restaurant.count})` : "(0)"}
+                        </span>
+                    </div>
                     <Reviews reviews={selectedRest.reviews}/>
+                    
                     <AddReview/>
                 </div>
                

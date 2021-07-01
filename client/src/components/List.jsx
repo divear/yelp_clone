@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import Finder from '../apis/Finder';
 import { Context } from '../context/Context';
 import {useHistory} from "react-router-dom"
+import StarRating from './StarRating';
  
 function List(props) {
     const {restaurants, setRestaurants} = useContext(Context);
@@ -12,6 +13,7 @@ function List(props) {
         const fetchData = async() =>{
             try {
                 const response = await Finder.get("/");
+                
                 setRestaurants(response.data.data.restaurants)
             } catch (error) {
                 console.log(error);
@@ -24,7 +26,7 @@ function List(props) {
     async function handleDelete(id){
         try {
             const response = await Finder.delete(`/${id}`);
-            console.log(response);
+            
             setRestaurants(restaurants.filter((restaurant) => {
                 return restaurant.id !== id
             }));
@@ -38,6 +40,14 @@ function List(props) {
     }
     async function handleSelect(id){
         history.push(`/restaurants/${id}`)
+    }
+    function renderRating(restaurant){
+        console.log(restaurant);
+        
+        return(<div className="stars">
+            <StarRating rating={restaurant.average_rating}/>
+            <span>{restaurant.count ? restaurant.count + " reviews" : "0 reviews"}</span>
+        </div>)
     }
 
     return (
@@ -55,15 +65,15 @@ function List(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {restaurants && restaurants.map(res =>{
+                    {restaurants && restaurants.map(restaurant =>{
                         return(
-                            <tr key={res.id}>
-                                <td onClick={()=>handleSelect(res.id)}>{res.name}</td>
-                                <td>{res.location}</td>
-                                <td>{res.price_range}</td>
-                                <td>reviews</td>
-                                <td><button onClick={()=>handleUpdate(res.id)} className="edit">Edit</button></td>
-                                <td><button onClick={()=>handleDelete(res.id)} className="delete">Delete</button></td>
+                            <tr key={restaurant.id}>
+                                <td onClick={()=>handleSelect(restaurant.id)}>{restaurant.name}</td>
+                                <td>{restaurant.location}</td>
+                                <td>{restaurant.price_range}</td>
+                                <td>{renderRating(restaurant)}</td>
+                                <td><button onClick={()=>handleUpdate(restaurant.id)} className="edit">Edit</button></td>
+                                <td><button onClick={()=>handleDelete(restaurant.id)} className="delete">Delete</button></td>
                             </tr>)
                     })}
                     

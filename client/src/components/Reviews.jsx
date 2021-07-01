@@ -6,6 +6,7 @@ function Reviews({reviews}) {
         <div className="revs">
             {reviews.map((review)=>{
                 return(
+                    
                     <div className="card">
                         <div className="cardHeader">
                             <span>{review.name}</span>

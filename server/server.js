@@ -17,13 +17,15 @@ app.use((req,res, next)=>{
 //get all
 app.get("/api/v1/restaurants", async(req, res)=>{
     try {
-        const results = await db.query("SELECT * FROM restaurants");
+        //const results = await db.query("SELECT * FROM restaurants");
+        const restaurantRatingsData = await db.query("select * from restaurants left join (select restaurant_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;")
+        console.log(restaurantRatingsData);
         
         res.json({
             status: "success",
-            results: results.rows.length,
+            results: restaurantRatingsData.rows.length,
             data: {
-                restaurants: results.rows
+                restaurants: restaurantRatingsData.rows
             }
         });
     } catch (error) {
@@ -36,7 +38,7 @@ app.get("/api/v1/restaurants", async(req, res)=>{
 app.get("/api/v1/restaurants/:id", async(req, res)=>{
     
     try {
-        const results = await db.query("SELECT * FROM restaurants WHERE id = $1", [req.params.id]);
+        const results = await db.query("select * from restaurants left join (select restaurant_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id WHERE id = $1", [req.params.id]);
 
         const reviews = await db.query("SELECT * FROM reviews WHERE restaurant_id = $1", [req.params.id]);
 
@@ -98,8 +100,23 @@ app.delete("/api/v1/restaurants/:id", async(req, res)=>{
         });
     } catch (error) {
         console.log(error);
+    }  
+});
+
+app.post("/api/v1/restaurants/:id/addReview", async(req,res)=>{
+    try {
+        const newReview = await db.query("INSERT INTO reviews (restaurant_id, name, body, rating) VALUES($1, $2, $3, $4) RETURNING *"
+        ,[req.params.id, req.body.name, req.body.body, req.body.rating]);
+        console.log(newReview);
+        res.status(201).json({
+            status: "success",
+            data:{
+                body: newReview.rows[0]
+            }
+        })
+    } catch (error) {
+        console.log(error);
     }
-    
 })
 
   
