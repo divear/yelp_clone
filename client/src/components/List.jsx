@@ -46,7 +46,7 @@ function List(props) {
         
         return(<div className="stars">
             <StarRating rating={restaurant.average_rating}/>
-            <span>{restaurant.count ? restaurant.count + " reviews" : "0 reviews"}</span>
+            <span className="revMes">{restaurant.count ? restaurant.count + " reviews" : "0 reviews"}</span>
         </div>)
     }
 
