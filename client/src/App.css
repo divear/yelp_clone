@@ -1,8 +1,12 @@
+:root{
+    --greenish: rgb(195, 245, 245);
+    --buttonPurpe: rgb(170, 143, 196);
+}
 *{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 0.5vw;
-  
+    box-sizing: border-box;
 }
 *::selection{
     background-color: rgb(127, 138, 161);
@@ -31,7 +35,7 @@ body{
     border: 1px black dotted ;
 }
 .AddResturant{
-    background-color: rgb(170, 143, 196);
+    background-color: var(--buttonPurpe);
 }
 table, th, td {
     width: 80vw;
@@ -51,15 +55,17 @@ table, th, td {
     background-color: rgb(236, 192, 201);
 }
 td{
-    background-color: rgb(195, 245, 245);
+    background-color: var(--greenish);
 }
 .update{
     color: aliceblue;
+    cursor:pointer;
 }
 .submit-edit{
-    background-color: rgb(65, 206, 159);
+    background-color: var(--greenish);
     font-size: 1vw;
     margin: 5vw;
+    cursor:pointer;
 }
 .form-group > select,input,label,button{
     width: 20vw;
@@ -68,7 +74,7 @@ td{
 }
 
 .card{
-    background-color: rgb(128, 94, 160);
+    background-color: var(--buttonPurpe);
     border-radius: 1vw;
 }
 .cardText{
@@ -91,11 +97,11 @@ td{
     text-align:left;
     left: 70%;
     top: 5%;
-    background-color: rgb(98, 129, 119);
+    background-color: var(--greenish);
     border-radius: 1vw;
 }
 .addrevsub{
-    background-color: rgb(128, 94, 160);
+    background-color: var(--buttonPurpe);
     color: rgb(48, 47, 47);
 }
 .restname{
@@ -103,4 +109,21 @@ td{
 }
 .revMes{
     color: black;
+}
+.revLabel{
+    margin: auto;
+}
+.revTextarea{
+    max-height: 10vw;
+    max-width: 20vw;
+    min-width: 6vw;
+}
+.homeIcon{
+    position: fixed;
+    left: 0%;
+    color: whitesmoke;
+    cursor:pointer;
+}
+.clickAble{
+    cursor:pointer;
 }

@@ -19,6 +19,7 @@ function AddReview() {
                 body: review,
                 rating
             });
+            console.log(response);
             history.push("/")
             history.push(location.pathname)
         } catch (error) {
@@ -47,8 +48,8 @@ function AddReview() {
                     </select>
                 </div>
                 <div className="formRow">
-                    <label htmlFor="Review">Review</label>
-                    <textarea value={review} onChange={(e)=>setReview(e.target.value)} id="Review"/>
+                    <label className="revLabel" htmlFor="Review">Review</label>
+                    <textarea className="revTextarea" value={review} onChange={(e)=>setReview(e.target.value)} id="Review"/>
                 </div>
                 <button onClick={handleSubmitReview} className="addrevsub" type="submit">Add a new review</button>
             </form>

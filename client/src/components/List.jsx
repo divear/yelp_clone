@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Finder from '../apis/Finder';
 import { Context } from '../context/Context';
 import {useHistory} from "react-router-dom"
@@ -26,7 +26,7 @@ function List(props) {
     async function handleDelete(id){
         try {
             const response = await Finder.delete(`/${id}`);
-            
+            console.log(response);
             setRestaurants(restaurants.filter((restaurant) => {
                 return restaurant.id !== id
             }));
@@ -46,8 +46,22 @@ function List(props) {
         
         return(<div className="stars">
             <StarRating rating={restaurant.average_rating}/>
+            <br />
             <span className="revMes">{restaurant.count ? restaurant.count + " reviews" : "0 reviews"}</span>
         </div>)
+    }
+    function MakepriceComment(restaurant){
+        
+        const b = {
+            1: "Almost free",
+            2: "Very Cheap",
+            3: "Mediocre price",
+            4: "Not that expensive",
+            5: "Expensive"
+        }
+        return (
+            <td>{eval("b[" + restaurant.price_range + "]")}</td>
+        )
     }
 
     return (
@@ -68,10 +82,13 @@ function List(props) {
                     {restaurants && restaurants.map(restaurant =>{
                         return(
                             <tr key={restaurant.id}>
-                                <td onClick={()=>handleSelect(restaurant.id)}>{restaurant.name}</td>
+                                <td className="clickAble" onClick={()=>handleSelect(restaurant.id)}>{restaurant.name}</td>
                                 <td>{restaurant.location}</td>
-                                <td>{restaurant.price_range}</td>
-                                <td>{renderRating(restaurant)}</td>
+                                <td>{restaurant.price_range} /5 
+                                {MakepriceComment(restaurant)}</td>
+                               
+                                <td className="clickAble" onClick={()=>handleSelect(restaurant.id)}>{renderRating(restaurant)}</td>
+                                
                                 <td><button onClick={()=>handleUpdate(restaurant.id)} className="edit">Edit</button></td>
                                 <td><button onClick={()=>handleDelete(restaurant.id)} className="delete">Delete</button></td>
                             </tr>)

@@ -25,7 +25,7 @@ function Update(props) {
             }
         }
         fetchData()
-    })
+    }, [])
 
     async function handleSubmit(e){
         e.preventDefault()

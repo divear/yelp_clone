@@ -5,6 +5,7 @@ import AddReview from '../components/AddReview';
 import Reviews from '../components/Reviews';
 import StarRating from '../components/StarRating';
 import { Context } from '../context/Context';
+import {FaHome} from "react-icons/fa"
 
 
 function Detail() {
@@ -36,6 +37,7 @@ function Detail() {
             <h1> {selectedRest ? (
                 <div>
                     <title>{selectedRest.restaurant.name}</title>
+                    <FaHome onClick={()=>history.push("/")} className="homeIcon"/>
                     <h1 className="restname">{selectedRest.restaurant.name}</h1>
                     <div className="stars">
                         <StarRating rating={selectedRest.restaurant.average_rating}/>

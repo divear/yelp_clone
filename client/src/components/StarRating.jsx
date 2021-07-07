@@ -7,15 +7,15 @@ function StarRating({rating}) {
         if(i <= rating){
             stars.push(<IoMdStar key={i}/>)
         }else if(i === Math.ceil(rating) && !Number.isInteger(rating)){
-            stars.push(<IoMdStarHalf/>)
+            stars.push(<IoMdStarHalf key={i}/>)
         }else{
             stars.push(<IoMdStarOutline key={i}/>)
         }
     }
     return (
-        <div>
+        <>
             {stars}
-        </div>
+        </>
     )
 }
 
